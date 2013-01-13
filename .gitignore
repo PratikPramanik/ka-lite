@@ -20,4 +20,8 @@ virtualenv/
 *.pid
 mergetomaster.sh
 videos/
-kalite/static/images/rssfeed.png
+content/*.jpg
+content/*.png
+content/*.mp4
+content/*.json
+content/*.srt
