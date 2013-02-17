@@ -1,6 +1,12 @@
-<!doctype html>
+<!DOCTYPE HTML>
+{% load i18n %}
+
 <html>
     <head>
+    <!--[if lt IE 9]>
+          <script src="{{ MEDIA_URL }}js/html5shiv.js"></script>
+    <![endif]-->
+
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         {% block titletag %}
         <title>{% block title %}{{ title }}{% endblock title %} | KA Lite</title>
@@ -11,15 +17,18 @@
         {% block headcss %}{% endblock headcss %}
         <link rel="shortcut icon" href="{{ MEDIA_URL }}images/favicon.ico">
         {% block jqueryjs %}
-        <script src="{{ MEDIA_URL }}js/jquery.js"></script>
+        <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-1.7.1.min.js"></script>
+        <script type="text/javascript" src="{{ MEDIA_URL }}js/underscore-min.js"></script>
+        <script type="text/javascript" src="{{ MEDIA_URL }}js/backbone-min.js"></script>
         {% endblock jqueryjs %}
-        <script src="{{ MEDIA_URL }}js/khan-lite.js"></script>
+        <script type="text/javascript" src="{{ MEDIA_URL }}js/khan-lite.js"></script>
         {% block headjs %}{% endblock headjs %}
         {% block basejs %}{% endblock basejs %}
         {% block extra_head %}{% endblock extra_head %}
         {% block extrahead %}{% endblock extrahead %}
         {% block analytics %}{% endblock analytics %}
     </head>
+    {% load i18n %}
     <body class="light {% block bodyclass %}{% endblock %}">
         <div id="outer-wrapper">
             <div id="page-container">
@@ -45,7 +54,7 @@
 
                             <div id="logo">
                                 <a id="logo-image-small" href="/" title="KA Lite Home" name="logo-image">
-                                    <img src="{{ MEDIA_URL }}images/ka-logo-small.png"/>
+                                    <img src="{{ MEDIA_URL }}images/horizontal-logo-small.png"/>
                                 </a>
                             </div>
                             <div class="clear"></div>
@@ -73,8 +82,10 @@
         <footer id="footer" class="short">
             <div id="leaves">
                 <div class="inner">
+                    {% block langselect %}
+                    {% endblock langselect %}
                     <div id="copyright" class="tiny">
-                        Videos and Exercises &copy; 2013 Khan Academy 
+                        {% trans "Videos and Exercises" %} &copy; 2013 Khan Academy 
                         <a rel="license" id="creative-commons-link" {% if is_central %} href="http://creativecommons.org/licenses/by-nc-sa/2.0/" target="_blank"{% endif %}></a>
                     </div>
                 </div>
